@@ -1,0 +1,12 @@
+C:\Users\Huawei\source\repos\FORM1\FORM1\bin\Debug\FORM1.exe.config
+C:\Users\Huawei\source\repos\FORM1\FORM1\bin\Debug\FORM1.exe
+C:\Users\Huawei\source\repos\FORM1\FORM1\bin\Debug\FORM1.pdb
+C:\Users\Huawei\source\repos\FORM1\FORM1\obj\Debug\FORM1.csproj.AssemblyReference.cache
+C:\Users\Huawei\source\repos\FORM1\FORM1\obj\Debug\FORM1.Form1.resources
+C:\Users\Huawei\source\repos\FORM1\FORM1\obj\Debug\FORM1.frmHome.resources
+C:\Users\Huawei\source\repos\FORM1\FORM1\obj\Debug\FORM1.Properties.Resources.resources
+C:\Users\Huawei\source\repos\FORM1\FORM1\obj\Debug\FORM1.csproj.GenerateResource.cache
+C:\Users\Huawei\source\repos\FORM1\FORM1\obj\Debug\FORM1.csproj.CoreCompileInputs.cache
+C:\Users\Huawei\source\repos\FORM1\FORM1\obj\Debug\FORM1.exe
+C:\Users\Huawei\source\repos\FORM1\FORM1\obj\Debug\FORM1.pdb
+C:\Users\Huawei\source\repos\FORM1\FORM1\obj\Debug\FORM1.frmTimeClock.resources
