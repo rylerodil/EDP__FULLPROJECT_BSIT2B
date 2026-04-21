@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,11 +17,14 @@ namespace FORM1
         {
             InitializeComponent();
         }
+    
+
         string[,] userCredentials =
        {
             {"admin","admin1","Rylee Rodil" },
             {"cashier","password","kontol" }
         };
+        DataTable dataTable = new DataTable();
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -40,34 +44,36 @@ namespace FORM1
                 MessageBox.Show("Please enter password!", "Validation");
                 tbPassword.Focus();
             }
+
             else
             {
-                for (int x = 0; x < userCredentials.GetLength(0); x++)
+                DataTable dt = db.ExecuteReturnQuery("select * from tblLoginCredentials WHERE user_username = @uname AND user_password = @pword",
+                  new MySqlParameter("@uname", tbUsername.Text),
+                  new MySqlParameter("@pword", tbPassword.Text));
+                if (dt.Rows.Count == 1)
                 {
-                    if (tbUsername.Text == userCredentials[x, 0])
-                    {
-                        if (tbPassword.Text == userCredentials[x, 1])
-                        {
-                            frmHome frm = new frmHome();
-                            MessageBox.Show("Welcome!, " + userCredentials[x, 2]);
-                            this.Hide();
-                            frm.Show();
-                            break;
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("Invalid Username/Password");
-                            break;
-
-                        }
-
-                    }
-
+                    frmHome frm = new frmHome();
+                    this.Hide();
+                    frm.Show(); 
                 }
-
+                else
+                {
+                    MessageBox.Show("Invalid Username or Password");
+                }
             }
 
+        }
+        MyDatabase db = new MyDatabase();
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            if (db.TestConnection() == true)
+            {
+                MessageBox.Show("Connected Successfully");
+            }
+            else
+            {
+                MessageBox.Show("Failed to Connect!");
+            }
         }
     }
 }
