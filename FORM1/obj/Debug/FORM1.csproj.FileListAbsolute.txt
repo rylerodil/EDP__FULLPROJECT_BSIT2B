@@ -29,3 +29,22 @@ C:\Users\COLLEGE STUDENT.DESKTOP-PK85OP0\source\repos\EDP__FULLPROJECT_BSIT2B\FO
 C:\Users\COLLEGE STUDENT.DESKTOP-PK85OP0\source\repos\EDP__FULLPROJECT_BSIT2B\FORM1\bin\Debug\System.Buffers.dll
 C:\Users\COLLEGE STUDENT.DESKTOP-PK85OP0\source\repos\EDP__FULLPROJECT_BSIT2B\FORM1\bin\Debug\MySql.Data.xml
 C:\Users\COLLEGE STUDENT.DESKTOP-PK85OP0\source\repos\EDP__FULLPROJECT_BSIT2B\FORM1\obj\Debug\FORM1.csproj.Up2Date
+C:\Users\Huawei\source\repos\EDP__FULLPROJECT_BSIT2BA\FORM1\bin\Debug\FORM1.exe.config
+C:\Users\Huawei\source\repos\EDP__FULLPROJECT_BSIT2BA\FORM1\bin\Debug\FORM1.exe
+C:\Users\Huawei\source\repos\EDP__FULLPROJECT_BSIT2BA\FORM1\bin\Debug\FORM1.pdb
+C:\Users\Huawei\source\repos\EDP__FULLPROJECT_BSIT2BA\FORM1\bin\Debug\System.Memory.dll
+C:\Users\Huawei\source\repos\EDP__FULLPROJECT_BSIT2BA\FORM1\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Huawei\source\repos\EDP__FULLPROJECT_BSIT2BA\FORM1\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Huawei\source\repos\EDP__FULLPROJECT_BSIT2BA\FORM1\bin\Debug\System.Buffers.dll
+C:\Users\Huawei\source\repos\EDP__FULLPROJECT_BSIT2BA\FORM1\bin\Debug\MySql.Data.xml
+C:\Users\Huawei\source\repos\EDP__FULLPROJECT_BSIT2BA\FORM1\obj\Debug\FORM1.csproj.AssemblyReference.cache
+C:\Users\Huawei\source\repos\EDP__FULLPROJECT_BSIT2BA\FORM1\obj\Debug\FORM1.Form1.resources
+C:\Users\Huawei\source\repos\EDP__FULLPROJECT_BSIT2BA\FORM1\obj\Debug\FORM1.frmHome.resources
+C:\Users\Huawei\source\repos\EDP__FULLPROJECT_BSIT2BA\FORM1\obj\Debug\FORM1.frmTimeClock.resources
+C:\Users\Huawei\source\repos\EDP__FULLPROJECT_BSIT2BA\FORM1\obj\Debug\FORM1.frmUsers.resources
+C:\Users\Huawei\source\repos\EDP__FULLPROJECT_BSIT2BA\FORM1\obj\Debug\FORM1.Properties.Resources.resources
+C:\Users\Huawei\source\repos\EDP__FULLPROJECT_BSIT2BA\FORM1\obj\Debug\FORM1.csproj.GenerateResource.cache
+C:\Users\Huawei\source\repos\EDP__FULLPROJECT_BSIT2BA\FORM1\obj\Debug\FORM1.csproj.CoreCompileInputs.cache
+C:\Users\Huawei\source\repos\EDP__FULLPROJECT_BSIT2BA\FORM1\obj\Debug\FORM1.csproj.Up2Date
+C:\Users\Huawei\source\repos\EDP__FULLPROJECT_BSIT2BA\FORM1\obj\Debug\FORM1.exe
+C:\Users\Huawei\source\repos\EDP__FULLPROJECT_BSIT2BA\FORM1\obj\Debug\FORM1.pdb
