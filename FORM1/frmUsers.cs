@@ -9,14 +9,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+using System.Data;
+
 
 namespace FORM1
 {
     public partial class frmUsers : Form
     {
+        string connectionString = "server=localhost;database=rodil_db;uid=root;pwd=;";
+
+        int selectedUserId = 0;
+
         public frmUsers()
         {
             InitializeComponent();
+        }
+        private void LoadUsers()
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+
+                string query = "SELECT * FROM users";
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
+
+                DataTable dt = new DataTable();
+
+                adapter.Fill(dt);
+
+                dgvUsers.DataSource = dt;
+            }
         }
 
         MyDatabase db = new MyDatabase();
@@ -45,75 +69,205 @@ namespace FORM1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (isUpdate == false)
+            using (MySqlConnection conn =
+   new MySqlConnection(connectionString))
             {
-                string query = "INSERT INTO tbluserinformation (firstname, middlename, lastname, emailAddress, homeAddress, birthDate)" +
-                " VALUES (@fname, @mname, @lname, @email, @hadd, @bDate);" +
-                "SET @newUserID = LAST_INSERT_ID();" +
-                "INSERT INTO tbllogincredentials (userID, user_username, user_password) VALUES (@newUserID, @username, @password);";
+                conn.Open();
 
-                int affectedRowCount = db.ExecuteNoReturnQuery(query,
-                    new MySqlParameter("@fname", tbFname.Text),
-                    new MySqlParameter("@mname", tbMname.Text),
-                    new MySqlParameter("@lname", tbLname.Text),
-                    new MySqlParameter("@email", tbEmailAdd.Text),
-                    new MySqlParameter("@hadd", tbHomeAdd.Text),
-                    new MySqlParameter("@bDate", dtpBirthDate.Value),
-                    new MySqlParameter("@username", tbUsername.Text),
-                    new MySqlParameter("@password", tbPassword.Text)
-                    );
+                string query = @"INSERT INTO users
+        (first_name, middle_name, last_name,
+        email, home_address, birth_date,
+        username, password)
 
-                if (affectedRowCount > 0)
-                {
-                    MessageBox.Show("Data Inserted!");
-                    frmUsers_Load(null, null);
-                }
-            }
-            else if (isUpdate == true)
-            {
-                //update process
+        VALUES
+        (@first, @middle, @last,
+        @email, @address, @birth,
+        @username, @password)";
 
+                MySqlCommand cmd =
+                new MySqlCommand(query, conn);
 
-                isUpdate = false;
+                cmd.Parameters.AddWithValue("@first",
+                tbFname.Text);
+
+                cmd.Parameters.AddWithValue("@middle",
+                tbMname.Text);
+
+                cmd.Parameters.AddWithValue("@last",
+                tbLname.Text);
+
+                cmd.Parameters.AddWithValue("@email",
+                tbEmailAdd.Text);
+
+                cmd.Parameters.AddWithValue("@address",
+                tbHomeAdd.Text);
+
+                cmd.Parameters.AddWithValue("@birth",
+                dtBirthDate.Value);
+
+                cmd.Parameters.AddWithValue("@username",
+                tbUsername.Text);
+
+                cmd.Parameters.AddWithValue("@password",
+                tbPassword.Text);
+
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show("Saved!");
+
+                LoadUsers();
             }
         }
 
         private void btnDeactivate_Click(object sender, EventArgs e)
         {
-            if (dgvUsers.SelectedRows.Count > 0)
+            using (MySqlConnection conn =
+    new MySqlConnection(connectionString))
             {
+                conn.Open();
 
-                DialogResult result = MessageBox.Show("Are you sure you want to deactivate this account?", "Account Deactivation", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
-                {
+                string query =
+                "UPDATE users SET status='Inactive' WHERE id=@id";
 
-                    int id = Convert.ToInt32(dgvUsers.SelectedRows[0].Cells[1].Value);
-                    string query = "UPDATE tbllogincredentials SET is_active = 0 where LoginID = @id";
+                MySqlCommand cmd =
+                new MySqlCommand(query, conn);
 
-                    int affectedRows = db.ExecuteNoReturnQuery(query,
-                        new MySqlParameter("@id", id));
-                    if (affectedRows > 0)
-                    {
-                        MessageBox.Show("Account is deactivated!");
-                    }
+                cmd.Parameters.AddWithValue("@id",
+                selectedUserId);
 
-                }
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show("Account Deactivated!");
+
+                LoadUsers();
             }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (dgvUsers.SelectedRows.Count > 0)
+            using (MySqlConnection conn =
+      new MySqlConnection(connectionString))
             {
-                DialogResult result = MessageBox.Show("Are you sure you want to update this account?", "Update Account", MessageBoxButtons.YesNo);
+                conn.Open();
+
+                string query = @"UPDATE users SET
+        first_name=@first,
+        middle_name=@middle,
+        last_name=@last,
+        email=@email,
+        home_address=@address,
+        birth_date=@birth,
+        username=@username,
+        password=@password
+
+        WHERE id=@id";
+
+                MySqlCommand cmd =
+                new MySqlCommand(query, conn);
+
+                cmd.Parameters.AddWithValue("@first",
+                tbFname.Text);
+
+                cmd.Parameters.AddWithValue("@middle",
+                tbFname.Text);
+
+                cmd.Parameters.AddWithValue("@last",
+                tbLname.Text);
+
+                cmd.Parameters.AddWithValue("@email",
+                tbEmailAdd.Text);
+
+                cmd.Parameters.AddWithValue("@address",
+                tbHomeAdd.Text);
+
+                cmd.Parameters.AddWithValue("@birth",
+                dtBirthDate.Value);
+
+                cmd.Parameters.AddWithValue("@username",
+                tbUsername.Text);
+
+                cmd.Parameters.AddWithValue("@password",
+                tbPassword.Text);
+
+                cmd.Parameters.AddWithValue("@id",
+                selectedUserId);
+
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show("Updated!");
+
+                LoadUsers();
+            }
+        }
+
+
+        private void dgvUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row =
+                dgvUsers.Rows[e.RowIndex];
+
+                selectedUserId =
+                Convert.ToInt32(row.Cells["id"].Value);
+
+                tbFname.Text =
+                row.Cells["first_name"].Value.ToString();
+
+                tbMname.Text =
+                row.Cells["middle_name"].Value.ToString();
+
+                tbLname.Text =
+                row.Cells["last_name"].Value.ToString();
+
+                tbEmailAdd.Text =
+                row.Cells["email"].Value.ToString();
+
+                tbHomeAdd.Text =
+                row.Cells["home_address"].Value.ToString();
+
+                dtBirthDate.Value =
+                Convert.ToDateTime(row.Cells["birth_date"].Value);
+
+                tbUsername.Text =
+                row.Cells["username"].Value.ToString();
+
+                tbPassword.Text =
+                row.Cells["password"].Value.ToString();
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            {
+                DialogResult result =
+                MessageBox.Show(
+                    "Delete user?",
+                    "Confirm",
+                    MessageBoxButtons.YesNo);
+
                 if (result == DialogResult.Yes)
                 {
-                    isUpdate = true;
-                    int idUserInfo = Convert.ToInt32(dgvUsers.SelectedRows[0].Cells[0].Value);
-                    int idLoginCredentials = Convert.ToInt32(dgvUsers.SelectedRows[0].Cells[1].Value);
-                    tbFname.Text = dgvUsers.SelectedRows[0].Cells[2].Value.ToString();
+                    using (MySqlConnection conn =
+                    new MySqlConnection(connectionString))
+                    {
+                        conn.Open();
 
-                  
+                        string query =
+                        "DELETE FROM users WHERE id=@id";
+
+                        MySqlCommand cmd =
+                        new MySqlCommand(query, conn);
+
+                        cmd.Parameters.AddWithValue("@id",
+                        selectedUserId);
+
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("Deleted!");
+
+                        LoadUsers();
+                    }
                 }
             }
         }

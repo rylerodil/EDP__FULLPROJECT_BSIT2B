@@ -37,18 +37,19 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tbHomeAdd = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.dtpBirthDate = new System.Windows.Forms.ComboBox();
+            this.dtBirthDate = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvUsers = new System.Windows.Forms.DataGridView();
             this.btnDeactivate = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.tbLname = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.btn = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -133,14 +134,14 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Birth Date:";
             // 
-            // dtpBirthDate
+            // dtBirthDate
             // 
-            this.dtpBirthDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpBirthDate.FormattingEnabled = true;
-            this.dtpBirthDate.Location = new System.Drawing.Point(17, 387);
-            this.dtpBirthDate.Name = "dtpBirthDate";
-            this.dtpBirthDate.Size = new System.Drawing.Size(275, 33);
-            this.dtpBirthDate.TabIndex = 2;
+            this.dtBirthDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtBirthDate.FormattingEnabled = true;
+            this.dtBirthDate.Location = new System.Drawing.Point(17, 387);
+            this.dtBirthDate.Name = "dtBirthDate";
+            this.dtBirthDate.Size = new System.Drawing.Size(275, 33);
+            this.dtBirthDate.TabIndex = 2;
             // 
             // label6
             // 
@@ -182,7 +183,7 @@
             // 
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(139, 567);
+            this.btnSave.Location = new System.Drawing.Point(125, 579);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(167, 56);
             this.btnSave.TabIndex = 3;
@@ -190,20 +191,21 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.button1_Click);
             // 
-            // dataGridView1
+            // dgvUsers
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(309, 9);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(575, 524);
-            this.dataGridView1.TabIndex = 4;
+            this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUsers.Location = new System.Drawing.Point(309, 9);
+            this.dgvUsers.Name = "dgvUsers";
+            this.dgvUsers.RowHeadersWidth = 51;
+            this.dgvUsers.RowTemplate.Height = 24;
+            this.dgvUsers.Size = new System.Drawing.Size(865, 584);
+            this.dgvUsers.TabIndex = 4;
+            this.dgvUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellContentClick);
             // 
             // btnDeactivate
             // 
             this.btnDeactivate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeactivate.Location = new System.Drawing.Point(751, 546);
+            this.btnDeactivate.Location = new System.Drawing.Point(904, 602);
             this.btnDeactivate.Name = "btnDeactivate";
             this.btnDeactivate.Size = new System.Drawing.Size(133, 46);
             this.btnDeactivate.TabIndex = 5;
@@ -214,7 +216,7 @@
             // btnUpdate
             // 
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(596, 546);
+            this.btnUpdate.Location = new System.Drawing.Point(765, 602);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(133, 46);
             this.btnUpdate.TabIndex = 5;
@@ -240,16 +242,28 @@
             this.tbLname.Size = new System.Drawing.Size(275, 30);
             this.tbLname.TabIndex = 1;
             // 
+            // btn
+            // 
+            this.btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn.Location = new System.Drawing.Point(1043, 602);
+            this.btn.Name = "btn";
+            this.btn.Size = new System.Drawing.Size(131, 43);
+            this.btn.TabIndex = 6;
+            this.btn.Text = "Delete";
+            this.btn.UseVisualStyleBackColor = true;
+            this.btn.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // frmUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(897, 627);
+            this.ClientSize = new System.Drawing.Size(1215, 680);
+            this.Controls.Add(this.btn);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnDeactivate);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvUsers);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.dtpBirthDate);
+            this.Controls.Add(this.dtBirthDate);
             this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.tbHomeAdd);
             this.Controls.Add(this.tbLname);
@@ -267,7 +281,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmUsers";
             this.Text = "frmUsers";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -284,16 +298,17 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tbHomeAdd;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox dtpBirthDate;
+        private System.Windows.Forms.ComboBox dtBirthDate;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tbUsername;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvUsers;
         private System.Windows.Forms.Button btnDeactivate;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox tbLname;
+        private System.Windows.Forms.Button btn;
     }
 }
